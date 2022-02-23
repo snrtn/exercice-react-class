@@ -6,7 +6,9 @@ class Mycars extends Component {
     return (
       <div>
         <h1>Hello World</h1>
-        <Car />
+        <Car color="red">Ford</Car>
+        <Car color="">Mercedes</Car>
+        <Car color="green"></Car>
       </div>
     );
   }
