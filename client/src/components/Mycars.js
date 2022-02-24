@@ -1,45 +1,41 @@
 import React, { Component } from "react";
-import Car from "./Cars";
 
 class Mycars extends Component {
-  noCopy = () => {
-    alert("merci de ne pas copier le texte");
+  state = {
+    voitures: [
+      { nmae: "Ford", color: "red", year: 2000 },
+      { nmae: "Mercedes", color: "black", year: 2010 },
+      { nmae: "LG", color: "", year: 2018 },
+    ],
+    title: "Mon Catalogue Voiture",
   };
 
-  // addStyle = (e) => {
-  //   console.log(e.target);
+  addTenYear = () => {
+    const updatedState = this.state.voitures.map((param) => {
+      return (param.year -= 10);
+    });
 
-  //   if (e.target.classList.contains("styled")) {
-  //     e.target.classList.remove("styled");
-  //   } else {
-  //     e.target.classList.add("styled");
-  //   }
-  // };
+    this.setState({
+      updatedState,
+    });
+  };
 
   render() {
-    return (
-      <div
-        style={{
-          backgroundColor: "pink",
-          width: "400px",
-          height: "100px",
-          display: "flex",
-          alignItems: "center",
-          flexDirection: "column",
-          marginTop: "10px",
-        }}
-      >
-        <h1 style={{ lineHeight: "60px" }}>{this.props.title}</h1>
+    const year = new Date().getFullYear();
 
-        <p onCopy={this.noCopy}>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
-          1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also
-          the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
-          Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-        </p>
-        <Car color="red">Ford</Car>
-        <Car color="">Mercedes</Car>
-        <Car color="green"></Car>
+    return (
+      <div>
+        <h1>{this.state.title}</h1>
+
+        <button onClick={this.addTenYear()}> + 10 ans</button>
+
+        {this.state.voitures.map((voiture, index) => {
+          return (
+            <div key={index}>
+              <car nmae={voiture.nmae} color={voiture.color} year={year - voiture.year + "ans"} />
+            </div>
+          );
+        })}
       </div>
     );
   }

@@ -1,41 +1,18 @@
 import React from "react";
 
-const Cars = ({ children, color }) => {
+const Cars = ({ nmae, color, year }) => {
   const colorInfo = color ? <p>Color: {color}</p> : <p>Color: blanche</p>;
 
-  if (children) {
+  if (nmae) {
     return (
-      <div
-        style={{
-          backgroundColor: "pink",
-          width: "400px",
-          height: "100px",
-          display: "flex",
-          alignItems: "center",
-          flexDirection: "column",
-          marginTop: "10px",
-        }}
-      >
-        <p>Marque: {children}</p>
+      <div>
+        <p>Marque: {nmae}</p>
+        <p>age: {year}</p>
         {colorInfo}
       </div>
     );
   } else {
-    return (
-      <div
-        style={{
-          backgroundColor: "pink",
-          width: "400px",
-          height: "100px",
-          display: "flex",
-          alignItems: "center",
-          flexDirection: "column",
-          marginTop: "10px",
-        }}
-      >
-        <p>Pas de data</p>
-      </div>
-    );
+    return null;
   }
 };
 
