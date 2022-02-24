@@ -1,12 +1,12 @@
 import React from "react";
 
-const Cars = ({ nmae, color, year }) => {
+const Cars = ({ color, name, year }) => {
   const colorInfo = color ? <p>Color: {color}</p> : <p>Color: blanche</p>;
 
-  if (nmae) {
+  if (name) {
     return (
       <div>
-        <p>Marque: {nmae}</p>
+        <p>Marque: {name}</p>
         <p>age: {year}</p>
         {colorInfo}
       </div>
